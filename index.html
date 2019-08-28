@@ -21,7 +21,7 @@
             height: 310px;
             border: 1px dashed #ccc;
             border-radius: 15px;
-            margin: 220px auto;
+            margin: 150px auto;
             text-align: center;
             position: relative;
         }
@@ -66,7 +66,7 @@
 </head>
 <body>
 <div class="box">
-    <input type="text" class="ipt" id="ipt" placeholder="请输入饲料剩余时间,如:1-26">
+    <input type="text" class="ipt" id="ipt" placeholder="请输入饲料剩余时间,如:1,26">
     <p class="qry" id="qry">
         <span class="btn">查询</span>
     </p>
@@ -90,8 +90,8 @@
         $('#qry').click(function () {
 
             var val = $('#ipt').val();
-            var h = val.split('-')[0];
-            var m = val.split('-')[1];
+            var h = val.split(',')[0];
+            var m = val.split(',')[1];
             var sum = h * 60 * 60 + m * 60;
 
             var now = new Date();
