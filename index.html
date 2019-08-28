@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>饲料吃完时间</title>
+    <style>
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .box {
+            width: 600px;
+            height: 310px;
+            border: 1px dashed #ccc;
+            border-radius: 15px;
+            margin: 220px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        input {
+            width: 350px;
+            height: 62px;
+            border-radius: 6px;
+            border: 1px solid skyblue;
+            outline: none;
+            font-size: 25px;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        .qry {
+            font-size: 24px;
+            height: 46px;
+            line-height: 46px;
+            background: #0079c0;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .btn{
+            color:#fff;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 34px;
+            text-align: left;
+            margin-left: 20px;
+        }
+
+        .time {
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <input type="text" class="ipt" id="ipt" placeholder="请输入饲料剩余时间,如:1-26">
+    <p class="qry" id="qry">
+        <span class="btn">查询</span>
+    </p>
+    <p>饲料预计吃完时间:</p>
+    <br>
+    <p class="time">
+        <span id="hour"></span>
+        :
+        <span id="min"></span>
+    </p>
+</div>
+<!--
+        var h = time.getHours() < 10 ? '0' + time.getHours() : time.getHours();
+        var m = time.getMinutes()< 10 ? '0' + time.getMinutes() : time.getMinutes();
+        var s = time.getSeconds()< 10 ? '0' + time.getSeconds() : time.getSeconds();
+-->
+<script src="jquery/jquery.min.js"></script>
+<script>
+    $(function () {
+
+        $('#qry').click(function () {
+
+            var val = $('#ipt').val();
+            var h = val.split('-')[0];
+            var m = val.split('-')[1];
+            var sum = h * 60 * 60 + m * 60;
+
+            var now = new Date();
+            var time = now.getTime() + 1000 * sum;
+            var newTime = new Date(time);
+
+            var h = newTime.getHours() < 10 ? '0' + newTime.getHours() : newTime.getHours();
+            var m = newTime.getMinutes() < 10 ? '0' + newTime.getMinutes() : newTime.getMinutes();
+
+            $('#hour').text(h);
+            $('#min').text(m);
+
+        })
+
+    })
+</script>
+</body>
+</html>
